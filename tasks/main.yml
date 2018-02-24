@@ -1,0 +1,12 @@
+- name: Configure the nginx default.conf accordingly
+  template: src=vhost_default.conf.j2 dest=/etc/nginx/conf.d/default.conf
+  notify: restart nginx
+
+- name: /var/www 
+  file: dest=/var/www state=directory
+  
+- name: upload main.html
+  copy: src=main.html dest=/var/www/main.html
+  
+- name: upload applicant.html
+  copy: src=applicant.html dest=/var/www/applicant.html
